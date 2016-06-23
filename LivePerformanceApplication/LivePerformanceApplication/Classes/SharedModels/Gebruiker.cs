@@ -15,6 +15,14 @@ namespace LivePerformanceApplication.Classes.SharedModels
         public List<Huurcontract> Huurcontracten { get; set; }
         public bool IsAdmin { get; set; }
 
+        public Gebruiker(int id, string email, string naam, bool isAdmin)
+        {
+            Id = id;
+            Email = email;
+            Naam = naam;
+            IsAdmin = isAdmin;
+        }
+
         public List<Huurcontract> GetHuurcontracten(int huurderId)
         {
             throw new NotImplementedException();

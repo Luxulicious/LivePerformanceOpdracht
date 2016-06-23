@@ -15,5 +15,18 @@ namespace LivePerformanceApplication.Classes.SharedModels
         public double Prijs { get; set; }
 
         public string SoortBoot { get; set; }
+
+        public Spierboot(int id, string naam, double prijs, string soortBoot)
+        {
+            Id = id;
+            Naam = naam;
+            Prijs = prijs;
+            SoortBoot = soortBoot;
+        }
+
+        public override string ToString()
+        {
+            return Naam + " " + Prijs + " " + SoortBoot;
+        }
     }
 }

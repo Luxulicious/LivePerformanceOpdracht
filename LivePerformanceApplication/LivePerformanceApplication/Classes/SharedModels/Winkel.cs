@@ -36,8 +36,15 @@ namespace LivePerformanceApplication.Classes.SharedModels
 
         public bool LogIn(string email, string wachtwoord)
         {
-            //TODO Nieuwe ingelogde gebruiker
-            throw new NotImplementedException();
+            try
+            {
+                IngelogdeGebruiker = DatabaseManager.GetGebruiker(email, wachtwoord);
+                return true;
+            }
+            catch (NullReferenceException)
+            {
+                return false;
+            }
         }
     }
 }
