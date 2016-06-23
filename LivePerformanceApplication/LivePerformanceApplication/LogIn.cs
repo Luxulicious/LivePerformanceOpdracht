@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using LivePerformanceApplication.Classes;
+using LivePerformanceApplication.Classes.Controllers;
 using LivePerformanceApplication.Classes.SharedModels;
 using LivePerformanceApplication.Exceptions;
 
@@ -34,6 +35,7 @@ namespace LivePerformanceApplication
             if (!string.IsNullOrEmpty(tbxEmail.Text) && !string.IsNullOrEmpty(tbxWachtwoord.Text))
                 if (FormProvider.winkel.LogIn(tbxEmail.Text, tbxWachtwoord.Text))
                 {
+
                     this.Hide();
                     FormProvider.Overzicht.Show();
                 }

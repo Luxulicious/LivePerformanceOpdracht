@@ -55,5 +55,22 @@ namespace LivePerformanceApplication.Classes.SharedModels
         {
             throw new NotImplementedException();
         }
+
+        public override string ToString()
+        {
+            string botenstring = string.Empty;
+            foreach (var boot in Boten)
+                botenstring += boot + " ";
+
+            string merenstring = string.Empty;
+            foreach (var meer in Meren)
+                merenstring += meer + " ";
+
+            string artikelenstring = string.Empty;
+            foreach (var artikel in Artikelen)
+                artikelenstring += artikel + " ";
+
+            return "Datum: " + DatumVan + " - " + DatumTot + " Boten:" + botenstring + " Meren:" + merenstring + " Artikelen:" + artikelenstring;
+        }
     }
 }

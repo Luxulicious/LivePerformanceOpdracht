@@ -39,7 +39,7 @@ namespace LivePerformanceApplication.Classes.SharedModels
 
         public override string ToString()
         {
-            return Naam + " " + Prijs + " " + SoortBoot + " " + Tankinhoud;
+            return Naam + " Prijs:" + Prijs + " Soort:" + " Tankinhoud:" + SoortBoot;
         }
     }
 }

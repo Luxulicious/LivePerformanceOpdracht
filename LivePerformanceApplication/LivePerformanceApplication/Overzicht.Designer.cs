@@ -32,7 +32,6 @@
             this.lbxHuurcontracten = new System.Windows.Forms.ListBox();
             this.btnAddMeer = new System.Windows.Forms.Button();
             this.btnAddHuurcontract = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.tbxNaam = new System.Windows.Forms.TextBox();
             this.nudPrijs = new System.Windows.Forms.NumericUpDown();
@@ -42,6 +41,7 @@
             this.clbxBoten = new System.Windows.Forms.CheckedListBox();
             this.nudTankInhoud = new System.Windows.Forms.NumericUpDown();
             this.lblActieRadius = new System.Windows.Forms.Label();
+            this.btnExporteer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrijs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTankInhoud)).BeginInit();
             this.SuspendLayout();
@@ -83,15 +83,6 @@
             this.btnAddHuurcontract.Text = "Huurcontract toevoegen";
             this.btnAddHuurcontract.UseVisualStyleBackColor = true;
             this.btnAddHuurcontract.Click += new System.EventHandler(this.btnAddHuurcontract_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(266, 324);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(119, 54);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // btnAdd
             // 
@@ -168,11 +159,22 @@
             this.lblActieRadius.TabIndex = 15;
             this.lblActieRadius.Text = "Actieradius: ";
             // 
+            // btnExporteer
+            // 
+            this.btnExporteer.Location = new System.Drawing.Point(139, 384);
+            this.btnExporteer.Name = "btnExporteer";
+            this.btnExporteer.Size = new System.Drawing.Size(119, 54);
+            this.btnExporteer.TabIndex = 16;
+            this.btnExporteer.Text = "Exporteer contracten";
+            this.btnExporteer.UseVisualStyleBackColor = true;
+            this.btnExporteer.Click += new System.EventHandler(this.btnExporteer_Click);
+            // 
             // Overzicht
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(733, 390);
+            this.ClientSize = new System.Drawing.Size(733, 499);
+            this.Controls.Add(this.btnExporteer);
             this.Controls.Add(this.lblActieRadius);
             this.Controls.Add(this.nudTankInhoud);
             this.Controls.Add(this.clbxBoten);
@@ -182,7 +184,6 @@
             this.Controls.Add(this.nudPrijs);
             this.Controls.Add(this.tbxNaam);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.btnAddHuurcontract);
             this.Controls.Add(this.btnAddMeer);
             this.Controls.Add(this.lbxHuurcontracten);
@@ -203,7 +204,6 @@
         private System.Windows.Forms.ListBox lbxHuurcontracten;
         private System.Windows.Forms.Button btnAddMeer;
         private System.Windows.Forms.Button btnAddHuurcontract;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox tbxNaam;
         private System.Windows.Forms.NumericUpDown nudPrijs;
@@ -213,5 +213,6 @@
         private System.Windows.Forms.CheckedListBox clbxBoten;
         private System.Windows.Forms.NumericUpDown nudTankInhoud;
         private System.Windows.Forms.Label lblActieRadius;
+        private System.Windows.Forms.Button btnExporteer;
     }
 }
