@@ -16,6 +16,16 @@ namespace LivePerformanceApplication.Classes.SharedModels
         public List<Meer> Meren { get; set; }
         public List<Artikel> Artikelen { get; set; }
 
+        public Huurcontract(int id, DateTime datumVan, DateTime datumTot, List<IBoot> boten, List<Meer> meren, List<Artikel> artikelen)
+        {
+            Id = id;
+            DatumVan = datumVan;
+            DatumTot = datumTot;
+            Boten = boten;
+            Meren = meren;
+            Artikelen = artikelen;
+        }
+
         public bool AddBoot(IBoot boot)
         {
             throw new NotImplementedException();

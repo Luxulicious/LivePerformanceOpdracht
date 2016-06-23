@@ -42,5 +42,11 @@ namespace LivePerformanceApplication
                     MessageBox.Show("Ongeldig e-mail adres en/of wachtwoord.");
                 }
         }
+
+        private void btnRegularLogIn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormProvider.Overzicht.Show();
+        }
     }
 }

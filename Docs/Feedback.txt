@@ -1,3 +1,9 @@
 1. Berekenen aantal meren op basis van budget
 2. Gevoelstemp per verhuur
 3. Boten niet op bepaalde vaargebieden.
+4. Boot mag niet verwijdert zonder bijhorende constraints.
+5. Layering toevoegen.
+6. Alt database.
+7. Huurcontract neemt artikelen/boten in beslag.
+
+m.veracx@fontys.nl

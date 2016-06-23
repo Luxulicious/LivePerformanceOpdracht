@@ -16,11 +16,13 @@ namespace LivePerformanceApplication.Classes
 {
     public static class DatabaseManager
     {
-        private static readonly string _strConnection =
-            "Data Source=//fhictora01.fhict.local:1521/fhictora;Persist Security Info=True;User Id=dbi278048;Password=password";
-
         //private static readonly string _strConnection =
-        //"Data Source=//localhost:1521/fhictora;Persist Security Info=True;User Id=dbi278048;Password=password";
+        //"Data Source=//fhictora01.fhict.local:1521/fhictora;Persist Security Info=True;User Id=dbi278048;Password=password";
+
+
+
+        private static readonly string _strConnection =
+        "Data Source=//localhost/:1521/xe;Persist Security Info=True;User Id=SYSTEM;Password=password";
 
 
 
@@ -116,7 +118,7 @@ namespace LivePerformanceApplication.Classes
                 using (_connection)
                 {
                     _connection.Open();
-                    _connection.Close();
+                    //_connection.Close();
                 }
             }
             catch (Exception exc)
@@ -239,6 +241,138 @@ namespace LivePerformanceApplication.Classes
                 return new List<IBoot>();
             }
         }
+
+        public static bool AddGebruiker(string naam, string email)
+        {
+            try
+            {
+                using (_connection)
+                {
+                    var cmd = CreateOracleCommand("INSERT INTO Gebruiker (Naam, Email) VALUES (:Naam, :Email)");
+                    cmd.Parameters.Add("Naam", naam);
+                    cmd.Parameters.Add("Email", email);
+                    return ExecuteNonQuery(cmd);
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static Gebruiker GetHuurder(string email, string naam)
+        {
+            try
+            {
+                using (_connection)
+                {
+                    var commmand = CreateOracleCommand("SELECT GebruikerId, Naam, Email, Wachtwoord FROM GEBRUIKER WHERE Email = :Email AND Naam = :Naam");
+                    commmand.Parameters.Add("Email", email);
+                    commmand.Parameters.Add("Naam", naam);
+                    var reader = ExecuteQuery(commmand);
+                    while (reader.Read())
+                    {
+                        var mail = reader["Email"].ToString();
+                        var klantnaam = reader["Naam"].ToString();
+                        int gebruikerId = -1;
+                        if (!string.IsNullOrEmpty(reader["GebruikerId"].ToString()))
+                            gebruikerId = Convert.ToInt32(reader["GebruikerId"]);
+                        var password = reader["Wachtwoord"].ToString();
+                        if (!string.IsNullOrEmpty(password))
+                            return new Gebruiker(gebruikerId, mail, klantnaam, true);
+                        return null;
+                    }
+
+                    return null;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+        public static bool AddHuurcontract(string email, string naam, Huurcontract huurcontract)
+        {
+            try
+            {
+                bool succes = true;
+
+                using (_connection)
+                {
+
+                    var huurder = new Gebruiker();
+                    if (GetHuurder(email, naam) != null)
+                    {
+                        huurder = GetHuurder(email, naam);
+                    }
+                    else if (AddGebruiker(naam, email))
+                    {
+                        huurder = GetHuurder(email, naam);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+
+                    var cmd =
+                        CreateOracleCommand(
+                            "INSERT INTO HUURCONTRACT (DatumVan, DatumTot, HuurderId) VALUES (:DatumVan, :DatumTot, :HuurderId)");
+                    cmd.Parameters.Add("DatumVan", huurcontract.DatumVan);
+                    cmd.Parameters.Add("DatumTot", huurcontract.DatumTot);
+                    cmd.Parameters.Add("HuurderId", 2);
+                    succes = ExecuteNonQuery(cmd);
+
+                    int huurcontractId = -1;
+                    cmd = CreateOracleCommand("SELECT MAX(HuurcontractId) FROM HUURCONTRACT");
+                    var reader = ExecuteQuery(cmd);
+                    while (reader.Read())
+                    {
+                        Convert.ToInt32(reader["HuurcontractId"].ToString());
+                    }
+
+                    //MEERHUUR
+                    foreach (var meer in huurcontract.Meren)
+                    {
+                        cmd = CreateOracleCommand("INSERT INTO MEERHUUR (MeerId, HuurcontractId) VALUES (:MeerId, :HuurcontractId)");
+                        cmd.Parameters.Add("MeerId", meer.Id);
+                        cmd.Parameters.Add("HuurcontractId", huurcontractId);
+                        succes = ExecuteNonQuery(cmd);
+                    }
+
+                    //ARTIKELHUUR
+                    foreach (var artikel in huurcontract.Artikelen)
+                    {
+                        cmd = CreateOracleCommand("INSERT INTO ARTIKELHUUR (ArtikelId, HuurcontractId) VALUES (:ArtikelId, :HuurcontractId)");
+                        cmd.Parameters.Add("ArtikelId", artikel.Id);
+                        cmd.Parameters.Add("HuurcontractId", huurcontractId);
+                        succes = ExecuteNonQuery(cmd);
+                    }
+
+                    //BOOTHUUR
+                    foreach (var boot in huurcontract.Boten)
+                    {
+                        cmd = CreateOracleCommand("INSERT INTO BOOTHUUR (BootId, HuurcontractId) VALUES (:BootId, :HuurcontractId)");
+                        cmd.Parameters.Add("BootId", boot.Id);
+                        cmd.Parameters.Add("HuurcontractId", huurcontractId);
+                        succes = ExecuteNonQuery(cmd);
+                    }
+
+                    return succes;
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 
 }

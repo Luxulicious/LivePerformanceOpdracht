@@ -31,16 +31,19 @@
             this.lbxVaargebieden = new System.Windows.Forms.ListBox();
             this.lbxHuurcontracten = new System.Windows.Forms.ListBox();
             this.btnAddMeer = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAddHuurcontract = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.tbxNaam = new System.Windows.Forms.TextBox();
             this.nudPrijs = new System.Windows.Forms.NumericUpDown();
             this.lblNaam = new System.Windows.Forms.Label();
             this.lblPrijs = new System.Windows.Forms.Label();
-            this.lblVerboden = new System.Windows.Forms.Label();
+            this.lblTank = new System.Windows.Forms.Label();
             this.clbxBoten = new System.Windows.Forms.CheckedListBox();
+            this.nudTankInhoud = new System.Windows.Forms.NumericUpDown();
+            this.lblActieRadius = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrijs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTankInhoud)).BeginInit();
             this.SuspendLayout();
             // 
             // lbxVaargebieden
@@ -71,14 +74,15 @@
             this.btnAddMeer.UseVisualStyleBackColor = true;
             this.btnAddMeer.Click += new System.EventHandler(this.btnAddMeer_Click);
             // 
-            // button2
+            // btnAddHuurcontract
             // 
-            this.button2.Location = new System.Drawing.Point(138, 324);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(119, 54);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAddHuurcontract.Location = new System.Drawing.Point(138, 324);
+            this.btnAddHuurcontract.Name = "btnAddHuurcontract";
+            this.btnAddHuurcontract.Size = new System.Drawing.Size(119, 54);
+            this.btnAddHuurcontract.TabIndex = 4;
+            this.btnAddHuurcontract.Text = "Huurcontract toevoegen";
+            this.btnAddHuurcontract.UseVisualStyleBackColor = true;
+            this.btnAddHuurcontract.Click += new System.EventHandler(this.btnAddHuurcontract_Click);
             // 
             // button3
             // 
@@ -91,7 +95,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(515, 188);
+            this.btnAdd.Location = new System.Drawing.Point(534, 349);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(187, 29);
             this.btnAdd.TabIndex = 6;
@@ -100,16 +104,16 @@
             // 
             // tbxNaam
             // 
-            this.tbxNaam.Location = new System.Drawing.Point(475, 12);
+            this.tbxNaam.Location = new System.Drawing.Point(496, 12);
             this.tbxNaam.Name = "tbxNaam";
-            this.tbxNaam.Size = new System.Drawing.Size(227, 22);
+            this.tbxNaam.Size = new System.Drawing.Size(206, 22);
             this.tbxNaam.TabIndex = 7;
             // 
             // nudPrijs
             // 
-            this.nudPrijs.Location = new System.Drawing.Point(475, 43);
+            this.nudPrijs.Location = new System.Drawing.Point(496, 43);
             this.nudPrijs.Name = "nudPrijs";
-            this.nudPrijs.Size = new System.Drawing.Size(227, 22);
+            this.nudPrijs.Size = new System.Drawing.Size(206, 22);
             this.nudPrijs.TabIndex = 8;
             // 
             // lblNaam
@@ -130,14 +134,14 @@
             this.lblPrijs.TabIndex = 10;
             this.lblPrijs.Text = "Prijs: ";
             // 
-            // lblVerboden
+            // lblTank
             // 
-            this.lblVerboden.AutoSize = true;
-            this.lblVerboden.Location = new System.Drawing.Point(406, 79);
-            this.lblVerboden.Name = "lblVerboden";
-            this.lblVerboden.Size = new System.Drawing.Size(296, 17);
-            this.lblVerboden.TabIndex = 11;
-            this.lblVerboden.Text = "Vergeet niet uw verboden boten te selecteren";
+            this.lblTank.AutoSize = true;
+            this.lblTank.Location = new System.Drawing.Point(406, 83);
+            this.lblTank.Name = "lblTank";
+            this.lblTank.Size = new System.Drawing.Size(91, 17);
+            this.lblTank.TabIndex = 11;
+            this.lblTank.Text = "Tankinhoud: ";
             // 
             // clbxBoten
             // 
@@ -146,21 +150,40 @@
             this.clbxBoten.Name = "clbxBoten";
             this.clbxBoten.Size = new System.Drawing.Size(120, 293);
             this.clbxBoten.TabIndex = 12;
+            this.clbxBoten.SelectedIndexChanged += new System.EventHandler(this.clbxBoten_SelectedIndexChanged);
+            // 
+            // nudTankInhoud
+            // 
+            this.nudTankInhoud.Location = new System.Drawing.Point(496, 83);
+            this.nudTankInhoud.Name = "nudTankInhoud";
+            this.nudTankInhoud.Size = new System.Drawing.Size(206, 22);
+            this.nudTankInhoud.TabIndex = 14;
+            // 
+            // lblActieRadius
+            // 
+            this.lblActieRadius.AutoSize = true;
+            this.lblActieRadius.Location = new System.Drawing.Point(406, 120);
+            this.lblActieRadius.Name = "lblActieRadius";
+            this.lblActieRadius.Size = new System.Drawing.Size(86, 17);
+            this.lblActieRadius.TabIndex = 15;
+            this.lblActieRadius.Text = "Actieradius: ";
             // 
             // Overzicht
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 390);
+            this.Controls.Add(this.lblActieRadius);
+            this.Controls.Add(this.nudTankInhoud);
             this.Controls.Add(this.clbxBoten);
-            this.Controls.Add(this.lblVerboden);
+            this.Controls.Add(this.lblTank);
             this.Controls.Add(this.lblPrijs);
             this.Controls.Add(this.lblNaam);
             this.Controls.Add(this.nudPrijs);
             this.Controls.Add(this.tbxNaam);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnAddHuurcontract);
             this.Controls.Add(this.btnAddMeer);
             this.Controls.Add(this.lbxHuurcontracten);
             this.Controls.Add(this.lbxVaargebieden);
@@ -168,6 +191,7 @@
             this.Text = "Overzicht";
             this.Load += new System.EventHandler(this.Overzicht_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudPrijs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTankInhoud)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,14 +202,16 @@
         private System.Windows.Forms.ListBox lbxVaargebieden;
         private System.Windows.Forms.ListBox lbxHuurcontracten;
         private System.Windows.Forms.Button btnAddMeer;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAddHuurcontract;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox tbxNaam;
         private System.Windows.Forms.NumericUpDown nudPrijs;
         private System.Windows.Forms.Label lblNaam;
         private System.Windows.Forms.Label lblPrijs;
-        private System.Windows.Forms.Label lblVerboden;
+        private System.Windows.Forms.Label lblTank;
         private System.Windows.Forms.CheckedListBox clbxBoten;
+        private System.Windows.Forms.NumericUpDown nudTankInhoud;
+        private System.Windows.Forms.Label lblActieRadius;
     }
 }

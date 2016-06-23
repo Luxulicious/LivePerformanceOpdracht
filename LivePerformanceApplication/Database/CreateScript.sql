@@ -212,4 +212,3 @@ INSERT INTO MEERHUUR (MeerId, HuurcontractId) VALUES(1, 1);
 INSERT INTO BOOTHUUR (BootId, HuurcontractId) VALUES(1, 1);
 
 INSERT INTO BOOTVERBOD (BootId, MeerId) VALUES ('2', 3);
-

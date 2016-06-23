@@ -54,6 +54,7 @@
             this.btnRegularLogIn.TabIndex = 1;
             this.btnRegularLogIn.Text = "Reguliere Gebruiker";
             this.btnRegularLogIn.UseVisualStyleBackColor = true;
+            this.btnRegularLogIn.Click += new System.EventHandler(this.btnRegularLogIn_Click);
             // 
             // tbxEmail
             // 

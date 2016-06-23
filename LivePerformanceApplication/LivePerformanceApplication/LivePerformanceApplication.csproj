@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Controllers\HurenController.cs" />
+    <Compile Include="Classes\Controllers\OverzichtController.cs" />
     <Compile Include="Classes\DatabaseManager.cs" />
     <Compile Include="Classes\FormProvider.cs" />
     <Compile Include="Classes\SharedModels\Artikel.cs" />
@@ -62,6 +64,12 @@
     <Compile Include="Classes\SharedModels\Winkel.cs" />
     <Compile Include="Exceptions\DatabaseNotConnectedException.cs" />
     <Compile Include="Exceptions\UniqueException.cs" />
+    <Compile Include="Huren.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Huren.Designer.cs">
+      <DependentUpon>Huren.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +84,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Huren.resx">
+      <DependentUpon>Huren.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
     </EmbeddedResource>

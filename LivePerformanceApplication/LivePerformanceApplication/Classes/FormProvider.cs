@@ -9,7 +9,7 @@ namespace LivePerformanceApplication.Classes
 {
     public class FormProvider
     {
-        public static Winkel winkel = new Winkel();
+        public static Winkel winkel;
 
         private static Overzicht _overzicht;
 
@@ -22,6 +22,20 @@ namespace LivePerformanceApplication.Classes
                     _overzicht = new Overzicht();
                 }
                 return _overzicht;
+            }
+        }
+
+        private static Huren _huren;
+
+        public static Huren Huren
+        {
+            get
+            {
+                if (_huren == null)
+                {
+                    _huren = new Huren();
+                }
+                return _huren;
             }
         }
     }

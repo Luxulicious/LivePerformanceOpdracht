@@ -27,9 +27,9 @@ namespace LivePerformanceApplication.Classes.SharedModels
             Tankinhoud = tankinhoud;
         }
 
-        public float BerekenActieRadius(double tankInhoud)
+        public double BerekenActieRadius(double tankInhoud)
         {
-            throw new NotImplementedException();
+            return Convert.ToDouble(tankInhoud * 15);
         }
 
         public override string ToString()

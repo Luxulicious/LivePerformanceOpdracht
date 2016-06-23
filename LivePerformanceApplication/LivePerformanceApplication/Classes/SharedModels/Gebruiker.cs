@@ -15,6 +15,10 @@ namespace LivePerformanceApplication.Classes.SharedModels
         public List<Huurcontract> Huurcontracten { get; set; }
         public bool IsAdmin { get; set; }
 
+        public Gebruiker()
+        {
+        }
+
         public Gebruiker(int id, string email, string naam, bool isAdmin)
         {
             Id = id;
