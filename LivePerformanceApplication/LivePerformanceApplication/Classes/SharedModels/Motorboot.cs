@@ -27,6 +27,11 @@ namespace LivePerformanceApplication.Classes.SharedModels
             Tankinhoud = tankinhoud;
         }
 
+        /// <summary>
+        /// Returns action radius of certain amount of liters
+        /// </summary>
+        /// <param name="tankInhoud"></param>
+        /// <returns></returns>
         public double BerekenActieRadius(double tankInhoud)
         {
             return Convert.ToDouble(tankInhoud * 15);
