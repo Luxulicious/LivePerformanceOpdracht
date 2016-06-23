@@ -1,0 +1,3 @@
+1. Berekenen aantal meren op basis van budget
+2. Gevoelstemp per verhuur
+3. Boten niet op bepaalde vaargebieden.

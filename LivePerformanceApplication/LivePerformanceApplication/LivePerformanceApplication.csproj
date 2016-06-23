@@ -52,6 +52,14 @@
   <ItemGroup>
     <Compile Include="Classes\DatabaseManager.cs" />
     <Compile Include="Classes\FormProvider.cs" />
+    <Compile Include="Classes\SharedModels\Artikel.cs" />
+    <Compile Include="Classes\SharedModels\Gebruiker.cs" />
+    <Compile Include="Classes\SharedModels\Huurcontract.cs" />
+    <Compile Include="Classes\SharedModels\IBoot.cs" />
+    <Compile Include="Classes\SharedModels\Meer.cs" />
+    <Compile Include="Classes\SharedModels\Motorboot.cs" />
+    <Compile Include="Classes\SharedModels\Spierboot.cs" />
+    <Compile Include="Classes\SharedModels\Winkel.cs" />
     <Compile Include="Exceptions\DatabaseNotConnectedException.cs" />
     <Compile Include="Exceptions\UniqueException.cs" />
     <Compile Include="Main.cs">
